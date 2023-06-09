@@ -9,26 +9,20 @@
   </head>
 
   <body x-data="cards">
-    <section class="cards">
+    <ul class="cards">
       <template x-for="card in listGood()">
-        <div class="card card--good">
-          <p x-text="card.text"></p>
-        </div>
+        <li class="card card--good" x-text="card.text" />
       </template>
-    </section>
-    <section class="cards">
+    </ul>
+    <ul class="cards">
       <template x-for="card in listBad()">
-        <div class="card card--bad">
-          <p x-text="card.text"></p>
-        </div>
+        <li class="card card--bad" x-text="card.text" />
       </template>
-    </section>
-    <section class="cards">
+    </ul>
+    <ul class="cards">
       <template x-for="card in listImprovement()">
-        <div class="card card--improvement">
-          <p x-text="card.text"></p>
-        </div>
+        <li class="card card--improvement" x-text="card.text" />
       </template>
-    </section>
+    </ul>
   </body>
 </html>
