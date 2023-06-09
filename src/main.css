@@ -1,9 +1,9 @@
 @import "reset.css";
 
 :root {
-  --color-bg-good: green;
-  --color-bg-bad: red;
-  --color-bg-improvement: grey;
+  --color-bg-good: rgb(17, 98, 57);
+  --color-bg-bad: rgb(194, 20, 58);
+  --color-bg-improvement: rgb(87, 75, 75);
 }
 
 .cards {
