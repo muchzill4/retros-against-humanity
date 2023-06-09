@@ -5,50 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Retros Against Humanity</title>
     <link rel="stylesheet" href="main.css" />
+    <script type="module" src="app.ts"></script>
   </head>
 
-  <body>
-    <section id="good" class="cards">
-      <div class="card card--good">
-        _____ was all the things, to all the people.
-      </div>
-      <div class="card card--good">
-        The secret to a good sprint they don’t want you to know about is _____.
-      </div>
-      <div class="card card--good">
-        More beautiful than a double rainbow; when _____ just works.
-      </div>
+  <body x-data="cards">
+    <section class="cards">
+      <template x-for="card in listGood()">
+        <div class="card card--good">
+          <p x-text="card.text"></p>
+        </div>
+      </template>
     </section>
-    <section id="bad" class="cards">
-      <div class="card card--bad">
-        _____ was all the things, to all the people.
-      </div>
-      <div class="card card--bad">
-        The secret to a good sprint they don’t want you to know about is _____.
-      </div>
-      <div class="card card--bad">
-        More beautiful than a double rainbow; when _____ just works.
-      </div>
+    <section class="cards">
+      <template x-for="card in listBad()">
+        <div class="card card--bad">
+          <p x-text="card.text"></p>
+        </div>
+      </template>
     </section>
-    <section id="improvement" class="cards">
-      <div class="card card--improvement">
-        _____ was all the things, to all the people.
-      </div>
-      <div class="card card--improvement">
-        The secret to a good sprint they don’t want you to know about is _____.
-      </div>
-      <div class="card card--improvement">
-        More beautiful than a double rainbow; when _____ just works.
-      </div>
-      <div class="card card--improvement">
-        More beautiful than a double rainbow; when _____ just works.
-      </div>
-      <div class="card card--improvement">
-        More beautiful than a double rainbow; when _____ just works.
-      </div>
-      <div class="card card--improvement">
-        More beautiful than a double rainbow; when _____ just works.
-      </div>
+    <section class="cards">
+      <template x-for="card in listImprovement()">
+        <div class="card card--improvement">
+          <p x-text="card.text"></p>
+        </div>
+      </template>
     </section>
   </body>
 </html>
