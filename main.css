@@ -1,0 +1,34 @@
+:root {
+  --color-bg-good: green;
+  --color-bg-bad: red;
+  --color-bg-improvement: grey;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  padding: 1em;
+  margin: 1em;
+  max-width: 19rem;
+  height: 25rem;
+  color: white;
+  font-size: 1.6em;
+  font-family: sans-serif;
+  font-weight: bold;
+  border-radius: 1rem;
+}
+
+.card--good {
+  background: var(--color-bg-good);
+}
+
+.card--bad {
+  background: var(--color-bg-bad);
+}
+
+.card--improvement {
+  background: var(--color-bg-improvement);
+}
