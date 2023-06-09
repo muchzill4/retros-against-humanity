@@ -1,15 +1,42 @@
 import defaults from "./default_state.json";
 
-export enum CardKind {
+enum CardKind {
   Good = "good",
   Bad = "bad",
   Improvement = "improvement",
 }
 
-type Card = {
+export type Card = {
   text: string;
   kind: CardKind;
 };
+
+export class Deck {
+  private cards: Card[];
+
+  constructor(cards: Card[]) {
+    this.cards = cards;
+  }
+
+  remaining(): number {
+    return this.cards.length;
+  }
+
+  random(): Card {
+    const randomIndex = Math.floor(Math.random() * this.cards.length);
+    return this.cards.splice(randomIndex, 1)[0];
+  }
+}
+
+export class DefaultStateStorage {
+  list(): Card[] {
+    return [
+      ...defaults.good.map(makeGoodCard),
+      ...defaults.bad.map(makeBadCard),
+      ...defaults.improvement.map(makeImprovementCard),
+    ];
+  }
+}
 
 function makeGoodCard(text: string) {
   return { text, kind: CardKind.Good };
@@ -21,17 +48,4 @@ function makeBadCard(text: string) {
 
 function makeImprovementCard(text: string) {
   return { text, kind: CardKind.Improvement };
-}
-
-export class DefaultStateStorage {
-  list(kind: CardKind): Card[] {
-    switch (kind) {
-      case CardKind.Good:
-        return defaults.good.map(makeGoodCard);
-      case CardKind.Bad:
-        return defaults.bad.map(makeBadCard);
-      case CardKind.Improvement:
-        return defaults.improvement.map(makeImprovementCard);
-    }
-  }
 }

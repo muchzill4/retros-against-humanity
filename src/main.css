@@ -6,23 +6,47 @@
   --color-bg-improvement: rgb(87, 75, 75);
 }
 
-.cards {
+body {
+  font-family: "Helvetica Neue", sans-serif;
   display: flex;
-  flex-wrap: wrap;
-  padding: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-slot {
+  position: relative;
+  padding: 1.5rem;
+  width: 25rem;
+  height: 32rem;
+  margin-bottom: 1rem; /* address bottom: -1rem on counter */
+}
+
+.card-slot__counter {
+  display: block;
+  height: 100px;
+  background: white;
+  position: absolute;
+  bottom: -1rem;
+  left: 0;
+  right: 0;
+  border-radius: 0.7rem;
+  box-shadow: 0px -3px 1px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  padding: 1rem;
+  color: #999;
 }
 
 .card {
   padding: 1em;
-  margin: 1em;
-  width: 20rem;
-  height: 25rem;
+  height: 100%;
+  width: 100%;
   color: white;
-  font-size: 1.6em;
-  font-family: sans-serif;
+  font-size: 2.2em;
+  line-height: 1.3em;
   font-weight: bold;
   border-radius: 1rem;
-  box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.5);
 }
 
 .card--good {
@@ -35,4 +59,27 @@
 
 .card--improvement {
   background: var(--color-bg-improvement);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+.btn {
+  background: white;
+  border: none;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  border-radius: 100%;
+  width: 5rem;
+  height: 5rem;
+  font-size: 3rem;
+  margin: 0 1rem;
+  transition: transform 100ms;
+  cursor: pointer;
+}
+
+.btn:hover {
+  transition: transform 200ms;
+  transform: scale(1.2);
 }

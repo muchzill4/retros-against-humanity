@@ -1,16 +1,34 @@
-import { DefaultStateStorage, CardKind } from "./cards";
+import { DefaultStateStorage, Deck, Card } from "./cards";
 import Alpine from "alpinejs";
-
-const storage = new DefaultStateStorage();
 
 window.Alpine = Alpine;
 
+class State {
+  deck: Deck;
+  protected previousPicks: Card[] = [];
+  private current: Card;
+
+  constructor(deck: Deck) {
+    this.deck = deck;
+    this.current = deck.random();
+  }
+
+  random() {
+    this.previousPicks.push(this.current);
+    this.current = this.deck.random();
+  }
+
+  remaining(): number {
+    return this.deck.remaining();
+  }
+}
+
 document.addEventListener("alpine:init", () => {
-  Alpine.data("cards", () => ({
-    listGood: () => storage.list(CardKind.Good),
-    listBad: () => storage.list(CardKind.Bad),
-    listImprovement: () => storage.list(CardKind.Improvement),
-  }));
+  const storage = new DefaultStateStorage();
+  const deck = new Deck(storage.list());
+  const cards = new State(deck);
+
+  Alpine.store("cards", cards);
 });
 
 Alpine.start();

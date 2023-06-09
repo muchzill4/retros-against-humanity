@@ -1,28 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Retros Against Humanity</title>
-    <link rel="stylesheet" href="main.css" />
-    <script type="module" src="app.ts"></script>
-  </head>
 
-  <body x-data="cards">
-    <ul class="cards">
-      <template x-for="card in listGood()">
-        <li class="card card--good" x-text="card.text" />
-      </template>
-    </ul>
-    <ul class="cards">
-      <template x-for="card in listBad()">
-        <li class="card card--bad" x-text="card.text" />
-      </template>
-    </ul>
-    <ul class="cards">
-      <template x-for="card in listImprovement()">
-        <li class="card card--improvement" x-text="card.text" />
-      </template>
-    </ul>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Retros Against Humanity</title>
+  <link rel="stylesheet" href="main.css" />
+  <script type="module" src="app.ts"></script>
+</head>
+
+<body>
+  <div class="card-slot" x-data>
+    <p class="card" :class="'card--'+$store.cards.current.kind" x-text="$store.cards.current.text"></p>
+    <p class="card-slot__counter">
+      <span x-text="$store.cards.remaining()"></span> left in the deck
+    </p>
+  </div>
+  <nav>
+    <button x-data class="btn" @click="$store.cards.random()">🎲</button>
+  </nav>
+</body>
+
 </html>
