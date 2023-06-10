@@ -106,3 +106,8 @@ nav {
   transition: transform 200ms;
   transform: scale(1.2);
 }
+
+.btn:active {
+  transition: transform 100ms;
+  transform: scale(1.1);
+}
