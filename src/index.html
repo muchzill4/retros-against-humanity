@@ -9,40 +9,42 @@
   <script type="module" src="app.ts"></script>
 </head>
 
-<body x-data="retro">
-  <div class="card-slot">
-    <div class="card card--intro" x-show="expanded" x-transition:enter="card--enter"
-      x-transition:enter-start="card--enter-start" x-transition:enter-end="card--enter-end"
-      x-transition:leave="card--leave" x-transition:leave-start="card--leave-start"
-      x-transition:leave-end="card--leave-end">
-      <template x-if="currentCard && hasRemainingCards()">
-        <p class="card__question" x-text="currentCard"></p>
-      </template>
-      <template x-if="!currentCard && hasRemainingCards()">
-        <div>
-          <p class="card__question">Retros Against Humanity</p>
-          <ol class="card__rules">
-            <li>🎲 Draw a card</li>
-            <li>✍️ Jot down your answer</li>
-            <li>👍 Choose the winner</li>
-            <li>💬 Discuss the winning answer</li>
-          </ol>
-        </div>
-      </template>
-      <template x-if="!hasRemainingCards()">
-        <div>
-          <p class="card__question">😅 You've reached the end of the deck.</p>
-          <a class="card__link" href="/">Restart</a>
-        </div>
-      </template>
+<body>
+  <main x-data="retro">
+    <div class="card-slot">
+      <div class="card card--intro" x-show="expanded" x-transition:enter="card--enter"
+        x-transition:enter-start="card--enter-start" x-transition:enter-end="card--enter-end"
+        x-transition:leave="card--leave" x-transition:leave-start="card--leave-start"
+        x-transition:leave-end="card--leave-end">
+        <template x-if="currentCard && hasRemainingCards()">
+          <p class="card__question" x-text="currentCard"></p>
+        </template>
+        <template x-if="!currentCard && hasRemainingCards()">
+          <div>
+            <p class="card__question">Retros Against Humanity</p>
+            <ol class="card__rules">
+              <li>🎲 Draw a card</li>
+              <li>✍️ Jot down your answer</li>
+              <li>👍 Choose the winner</li>
+              <li>💬 Discuss the winning answer</li>
+            </ol>
+          </div>
+        </template>
+        <template x-if="!hasRemainingCards()">
+          <div>
+            <p class="card__question">
+              😅 You've reached the end of the deck.
+            </p>
+            <a class="card__link" href="/">Restart</a>
+          </div>
+        </template>
+      </div>
+      <p class="card-slot__counter">
+        <span x-text="numRemainingCards()"></span> left in the deck
+      </p>
     </div>
-    <p class="card-slot__counter">
-      <span x-text="numRemainingCards()"></span> left in the deck
-    </p>
-  </div>
-  <nav>
     <button class="btn" @click="pickRandomCard()">🎲</button>
-  </nav>
+  </main>
 
   <footer class="credits">
     <a href="https://github.com/muchzill4"><img class="credits__logo" src="assets/mc4-logo.svg" alt="muchzill4"

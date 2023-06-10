@@ -5,21 +5,29 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
 }
 
 .card-slot {
   position: relative;
   padding: 1.5rem;
+  margin: 1rem 0;
   width: 25rem;
   height: 32rem;
-  margin-bottom: 1rem; /* address bottom: -1rem on counter */
+  max-width: 95vw;
+  max-height: 65vh;
   overflow: hidden;
 }
 
 .card-slot__counter {
   display: block;
-  height: 100px;
+  height: 4rem;
   background: white;
   position: absolute;
   bottom: -1rem;
@@ -84,11 +92,6 @@ body {
   transition: all 200ms;
 }
 
-nav {
-  display: flex;
-  align-items: center;
-}
-
 .btn {
   background: white;
   border: none;
@@ -97,7 +100,7 @@ nav {
   width: 5rem;
   height: 5rem;
   font-size: 3rem;
-  margin: 0 1rem;
+  margin: 0.5rem;
   padding: 0;
   transition: transform 100ms;
   cursor: pointer;
@@ -115,9 +118,9 @@ nav {
 
 .credits {
   font-size: 0.7rem;
-  position: absolute;
   bottom: 1em;
   right: 1em;
+  margin: 1rem 0;
 }
 
 .credits__logo {
