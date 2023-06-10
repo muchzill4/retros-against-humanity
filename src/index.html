@@ -30,7 +30,10 @@
         </div>
       </template>
       <template x-if="remainingCards() == 0">
-        <p class="card__question">Deck is empty..</p>
+        <div>
+          <p class="card__question">😅 You've reached the end of the deck.</p>
+          <a class="card__link" href="/">Restart</a>
+        </div>
       </template>
     </div>
     <p class="card-slot__counter">

@@ -48,12 +48,16 @@ body {
   font-size: 2.2em;
   line-height: 1.3em;
   font-weight: bold;
+  margin-bottom: 1em;
 }
 
 .card__rules {
-  margin-top: 2em;
   padding: 0;
   list-style-position: inside;
+}
+
+.card__link {
+  color: white;
 }
 
 .card--enter-start {
