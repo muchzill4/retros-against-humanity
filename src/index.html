@@ -9,18 +9,36 @@
   <script type="module" src="app.ts"></script>
 </head>
 
-<body>
-  <div class="card-slot" x-data>
-    <p class="card" :class="'card--'+$store.cards.current.kind" x-text="$store.cards.current.text"
-      x-show="$store.cards.expanded" x-transition:enter="card--enter" x-transition:enter-start="card--enter-start"
-      x-transition:enter-end="card--enter-end" x-transition:leave="card--leave"
-      x-transition:leave-start="card--leave-start" x-transition:leave-end="card--leave-end"></p>
+<body x-data="retro">
+  <div class="card-slot">
+    <div class="card card--intro" x-show="expanded" x-transition:enter="card--enter"
+      x-transition:enter-start="card--enter-start" x-transition:enter-end="card--enter-end"
+      x-transition:leave="card--leave" x-transition:leave-start="card--leave-start"
+      x-transition:leave-end="card--leave-end">
+      <template x-if="current && remaining() > 0">
+        <p class="card__question" x-text="current.text"></p>
+      </template>
+      <template x-if="!current && remaining() > 0">
+        <div>
+          <p class="card__question">Retros Against Humanity</p>
+          <ol class="card__rules">
+            <li>🎲 Draw a card</li>
+            <li>✍️ Jot down your answer</li>
+            <li>👍 Choose the winner</li>
+            <li>💬 Discuss the winning answer</li>
+          </ol>
+        </div>
+      </template>
+      <template x-if="remaining() == 0">
+        <p class="card__question">Deck is empty..</p>
+      </template>
+    </div>
     <p class="card-slot__counter">
-      <span x-text="$store.cards.remaining()"></span> left in the deck
+      <span x-text="remaining()"></span> left in the deck
     </p>
   </div>
   <nav>
-    <button x-data class="btn" @click="$store.cards.random()">🎲</button>
+    <button x-data class="btn" @click="pickRandom">🎲</button>
   </nav>
 </body>
 
