@@ -18,12 +18,12 @@ export default () => {
       }, 400);
     },
 
-    remainingCards(): number {
-      return this.deck.remaining();
+    numRemainingCards(): number {
+      return this.deck.numRemaining();
     },
 
     hasRemainingCards(): boolean {
-      return this.remainingCards() > 0;
+      return this.numRemainingCards() > 0;
     },
   };
 };

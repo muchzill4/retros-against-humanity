@@ -9,7 +9,7 @@ export class Deck {
     this.cards = cards;
   }
 
-  remaining(): number {
+  numRemaining(): number {
     return this.cards.length;
   }
 
