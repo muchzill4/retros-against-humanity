@@ -22,7 +22,7 @@ export class Deck {
     return this.cards.length;
   }
 
-  random(): Card {
+  pickRandom(): Card {
     const randomIndex = Math.floor(Math.random() * this.cards.length);
     return this.cards.splice(randomIndex, 1)[0];
   }

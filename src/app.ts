@@ -18,7 +18,7 @@ class CardsStore {
     const that = this;
     setTimeout(function() {
       that.previousPicks.push(that.current);
-      that.current = that.deck.random();
+      that.current = that.deck.pickRandom();
       that.expanded = true;
     }, 400);
   }
