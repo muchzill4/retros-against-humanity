@@ -1,35 +1,8 @@
-import { DefaultStateStorage, Deck, Card } from "./cards";
+import retro from "./retro.alpine";
 import Alpine from "alpinejs";
 
 window.Alpine = Alpine;
 
-class CardsStore {
-  deck: Deck;
-  current: Card;
-  expanded: boolean;
-
-  constructor(deck: Deck) {
-    this.deck = deck;
-  }
-
-  random() {
-    this.expanded = false;
-    const that = this;
-    setTimeout(function() {
-      that.current = that.deck.pickRandom();
-      that.expanded = true;
-    }, 400);
-  }
-
-  remaining(): number {
-    return this.deck.remaining();
-  }
-}
-
-document.addEventListener("alpine:init", () => {
-  const storage = new DefaultStateStorage();
-  const deck = new Deck(storage.list());
-  Alpine.store("cards", new CardsStore(deck));
-});
+Alpine.data("retro", retro);
 
 Alpine.start();
