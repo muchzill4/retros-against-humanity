@@ -98,6 +98,7 @@ nav {
   height: 5rem;
   font-size: 3rem;
   margin: 0 1rem;
+  padding: 0;
   transition: transform 100ms;
   cursor: pointer;
 }
