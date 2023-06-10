@@ -11,10 +11,18 @@ export default () => {
 
     pickRandomCard() {
       this.expanded = false;
-      const that = this;
-      setTimeout(function() {
-        that.currentCard = that.deck.pickRandom();
-        that.expanded = true;
+      setTimeout(() => {
+        this.currentCard = this.deck.pickRandom();
+        this.expanded = true;
+      }, 400);
+    },
+
+    reset() {
+      this.expanded = false;
+      setTimeout(() => {
+        this.deck = new Deck(storage.list());
+        this.currentCard = null;
+        this.expanded = true;
       }, 400);
     },
 

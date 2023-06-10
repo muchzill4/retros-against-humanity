@@ -32,10 +32,8 @@
         </template>
         <template x-if="!hasRemainingCards()">
           <div>
-            <p class="card__question">
-              😅 You've reached the end of the deck.
-            </p>
-            <a class="card__link" href="/">Restart</a>
+            <p class="card__question">😅</p>
+            <p class="card__question">You've reached the end of the deck.</p>
           </div>
         </template>
       </div>
@@ -43,7 +41,12 @@
         <span x-text="numRemainingCards()"></span> left in the deck
       </p>
     </div>
-    <button class="btn" @click="pickRandomCard()">🎲</button>
+    <button x-show="hasRemainingCards()" class="btn" @click="pickRandomCard()">
+      🎲
+    </button>
+    <button x-show="!hasRemainingCards()" class="btn" @click="reset()">
+      🔄
+    </button>
   </main>
 
   <footer class="credits">
