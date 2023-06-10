@@ -16,10 +16,10 @@
         x-transition:enter-start="card--enter-start" x-transition:enter-end="card--enter-end"
         x-transition:leave="card--leave" x-transition:leave-start="card--leave-start"
         x-transition:leave-end="card--leave-end">
-        <template x-if="currentCard && hasRemainingCards()">
+        <template x-if="currentCard">
           <p class="card__question" x-text="currentCard"></p>
         </template>
-        <template x-if="!currentCard && hasRemainingCards()">
+        <template x-if="!currentCard && !isEndOfDeck()">
           <div>
             <p class="card__question">Retros Against Humanity</p>
             <ol class="card__rules">
@@ -30,7 +30,7 @@
             </ol>
           </div>
         </template>
-        <template x-if="!hasRemainingCards()">
+        <template x-if="isEndOfDeck()">
           <div>
             <p class="card__question">😅</p>
             <p class="card__question">You've reached the end of the deck.</p>
@@ -41,12 +41,10 @@
         <span x-text="numRemainingCards()"></span> left in the deck
       </p>
     </div>
-    <button x-show="hasRemainingCards()" class="btn" @click="pickRandomCard()">
+    <button x-show="!isEndOfDeck()" class="btn" @click="pickRandomCard()">
       🎲
     </button>
-    <button x-show="!hasRemainingCards()" class="btn" @click="reset()">
-      🔄
-    </button>
+    <button x-show="isEndOfDeck()" class="btn" @click="reset()">🔄</button>
   </main>
 
   <footer class="credits">

@@ -21,6 +21,6 @@ export class Deck {
 
 export class DefaultStateStorage {
   list(): Card[] {
-    return defaults;
+    return [...defaults];
   }
 }

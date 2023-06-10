@@ -30,8 +30,8 @@ export default () => {
       return this.deck.numRemaining();
     },
 
-    hasRemainingCards(): boolean {
-      return this.numRemainingCards() > 0;
+    isEndOfDeck(): boolean {
+      return this.numRemainingCards() == 0 && !this.currentCard;
     },
   };
 };
