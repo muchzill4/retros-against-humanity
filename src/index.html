@@ -15,10 +15,10 @@
       x-transition:enter-start="card--enter-start" x-transition:enter-end="card--enter-end"
       x-transition:leave="card--leave" x-transition:leave-start="card--leave-start"
       x-transition:leave-end="card--leave-end">
-      <template x-if="current && remaining() > 0">
-        <p class="card__question" x-text="current.text"></p>
+      <template x-if="currentCard && remainingCards() > 0">
+        <p class="card__question" x-text="currentCard"></p>
       </template>
-      <template x-if="!current && remaining() > 0">
+      <template x-if="!currentCard && remainingCards() > 0">
         <div>
           <p class="card__question">Retros Against Humanity</p>
           <ol class="card__rules">
@@ -29,16 +29,16 @@
           </ol>
         </div>
       </template>
-      <template x-if="remaining() == 0">
+      <template x-if="remainingCards() == 0">
         <p class="card__question">Deck is empty..</p>
       </template>
     </div>
     <p class="card-slot__counter">
-      <span x-text="remaining()"></span> left in the deck
+      <span x-text="remainingCards()"></span> left in the deck
     </p>
   </div>
   <nav>
-    <button x-data class="btn" @click="pickRandom">🎲</button>
+    <button x-data class="btn" @click="pickRandomCard()">🎲</button>
   </nav>
 </body>
 

@@ -1,15 +1,6 @@
 import defaults from "./default_state.json";
 
-enum CardKind {
-  Good = "good",
-  Bad = "bad",
-  Improvement = "improvement",
-}
-
-export type Card = {
-  text: string;
-  kind: CardKind;
-};
+export type Card = string;
 
 export class Deck {
   private cards: Card[];
@@ -30,22 +21,6 @@ export class Deck {
 
 export class DefaultStateStorage {
   list(): Card[] {
-    return [
-      ...defaults.good.map(makeGoodCard),
-      ...defaults.bad.map(makeBadCard),
-      ...defaults.improvement.map(makeImprovementCard),
-    ];
+    return defaults;
   }
-}
-
-function makeGoodCard(text: string) {
-  return { text, kind: CardKind.Good };
-}
-
-function makeBadCard(text: string) {
-  return { text, kind: CardKind.Bad };
-}
-
-function makeImprovementCard(text: string) {
-  return { text, kind: CardKind.Improvement };
 }

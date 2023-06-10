@@ -5,20 +5,20 @@ export default () => {
   const deck = new Deck(storage.list());
 
   return {
-    current: null,
+    currentCard: null,
     deck: deck,
     expanded: true,
 
-    pickRandom() {
+    pickRandomCard() {
       this.expanded = false;
       const that = this;
       setTimeout(function() {
-        that.current = that.deck.pickRandom();
+        that.currentCard = that.deck.pickRandom();
         that.expanded = true;
       }, 400);
     },
 
-    remaining(): number {
+    remainingCards(): number {
       return this.deck.remaining();
     },
   };
