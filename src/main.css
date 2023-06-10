@@ -111,3 +111,16 @@ nav {
   transition: transform 100ms;
   transform: scale(1.1);
 }
+
+.credits {
+  font-size: 0.7rem;
+  position: absolute;
+  bottom: 1em;
+  right: 1em;
+}
+
+.credits__logo {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 0.2rem;
+}
