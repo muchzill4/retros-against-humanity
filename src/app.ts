@@ -5,8 +5,7 @@ window.Alpine = Alpine;
 
 class CardsStore {
   deck: Deck;
-  protected previousPicks: Card[] = [];
-  private current: Card;
+  current: Card;
   expanded: boolean;
 
   constructor(deck: Deck) {
@@ -17,7 +16,6 @@ class CardsStore {
     this.expanded = false;
     const that = this;
     setTimeout(function() {
-      that.previousPicks.push(that.current);
       that.current = that.deck.pickRandom();
       that.expanded = true;
     }, 400);
