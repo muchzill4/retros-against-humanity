@@ -3,19 +3,24 @@ import Alpine from "alpinejs";
 
 window.Alpine = Alpine;
 
-class State {
+class CardsStore {
   deck: Deck;
   protected previousPicks: Card[] = [];
   private current: Card;
+  expanded: boolean;
 
   constructor(deck: Deck) {
     this.deck = deck;
-    this.current = deck.random();
   }
 
   random() {
-    this.previousPicks.push(this.current);
-    this.current = this.deck.random();
+    this.expanded = false;
+    const that = this;
+    setTimeout(function() {
+      that.previousPicks.push(that.current);
+      that.current = that.deck.random();
+      that.expanded = true;
+    }, 400);
   }
 
   remaining(): number {
@@ -26,9 +31,7 @@ class State {
 document.addEventListener("alpine:init", () => {
   const storage = new DefaultStateStorage();
   const deck = new Deck(storage.list());
-  const cards = new State(deck);
-
-  Alpine.store("cards", cards);
+  Alpine.store("cards", new CardsStore(deck));
 });
 
 Alpine.start();

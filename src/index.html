@@ -11,7 +11,10 @@
 
 <body>
   <div class="card-slot" x-data>
-    <p class="card" :class="'card--'+$store.cards.current.kind" x-text="$store.cards.current.text"></p>
+    <p class="card" :class="'card--'+$store.cards.current.kind" x-text="$store.cards.current.text"
+      x-show="$store.cards.expanded" x-transition:enter="card--enter" x-transition:enter-start="card--enter-start"
+      x-transition:enter-end="card--enter-end" x-transition:leave="card--leave"
+      x-transition:leave-start="card--leave-start" x-transition:leave-end="card--leave-end"></p>
     <p class="card-slot__counter">
       <span x-text="$store.cards.remaining()"></span> left in the deck
     </p>
