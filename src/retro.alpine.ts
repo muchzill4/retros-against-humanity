@@ -21,5 +21,9 @@ export default () => {
     remainingCards(): number {
       return this.deck.remaining();
     },
+
+    hasRemainingCards(): boolean {
+      return this.remainingCards() > 0;
+    },
   };
 };

@@ -15,10 +15,10 @@
       x-transition:enter-start="card--enter-start" x-transition:enter-end="card--enter-end"
       x-transition:leave="card--leave" x-transition:leave-start="card--leave-start"
       x-transition:leave-end="card--leave-end">
-      <template x-if="currentCard && remainingCards() > 0">
+      <template x-if="currentCard && hasRemainingCards()">
         <p class="card__question" x-text="currentCard"></p>
       </template>
-      <template x-if="!currentCard && remainingCards() > 0">
+      <template x-if="!currentCard && hasRemainingCards()">
         <div>
           <p class="card__question">Retros Against Humanity</p>
           <ol class="card__rules">
@@ -29,7 +29,7 @@
           </ol>
         </div>
       </template>
-      <template x-if="remainingCards() == 0">
+      <template x-if="!hasRemainingCards()">
         <div>
           <p class="card__question">😅 You've reached the end of the deck.</p>
           <a class="card__link" href="/">Restart</a>
